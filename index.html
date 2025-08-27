@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Warrior Queen's Code - Lead with Love. Reign with Power.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --gold: #FFD700;
+            --dark-gold: #D4AF37;
+            --black: #000000;
+            --dark-gray: #1a1a1a;
+            --light-gray: #f8f8f8;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--white);
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-gray) 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width:鑰榖1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 100%);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--gold);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--gold);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--gold), var(--dark-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: var(--white);
+        }
+
+        .tagline {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 20px 0;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, var(--gold), var(--dark-gold));
+            color: var(--black);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: var(--dark-gray);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: var(--gold);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            padding: 20px;
+        }
+
+        .about-text h3 {
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 100px 0;
+            background: var(--black);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .product-card {
+            background: var(--dark-gray);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-title {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Values Section */
+        .values {
+            padding: 100px 0;
+            background: var(--dark-gray);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 215, 0, 0.15);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .value-title {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Foundation Section */
+        .foundation {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-gray) 100%);
+            text-align: center;
+        }
+
+        .foundation-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            padding: 60px 0 30px;
+            border-top: 2px solid var(--gold);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .footer-section p {
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            color: var(--black);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            background: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            color: var(--white);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .tagline {
+                font-size: 1.5rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-crown"></i>
+                Warrior Queen
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#about">Our Story</a></li>
+                    <li><a href="#products">Collections</a></li>
+                    <li><a href="#values">Our Values</a></li>
+                    <li><a href="#foundation">Foundation</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>The Warrior Queen's Code</h1>
+            <p>We are not victims; we are warrior queens. Our power is not in what we survived, but in how we rise.</p>
+            <div class="tagline">Lead with Love. Reign with Power.</div>
+            <a href="#products" class="btn">Explore Collections</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Our Story</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fb0a836a-a439-4306-9b61-af6e8467d961.png" alt="Elegant woman warrior in gold and black attire standing confidently with city skyline background - modern fashion photography style with cinematic lighting" />
+                </div>
+                <div class="about-text">
+                    <h3>The Crown on the Battlefield</h3>
+                    <p>We are The Warrior Queen's Code. We believe that true power isn't about what you've survived; it's about what you've become. Our brand was born from a powerful truth: every woman has the spirit of a warrior and the elegance of a queen within her.</p>
+                    <p>For too long, women have been defined by their pain. We are here to rewrite that narrative. We are here to declare that we are not victims; we are warrior queens.</p>
+                    <p>Our collection of clothing is more than just fabric and thread. It's a uniform for the modern warrior queen, designed to empower you to own every space you enter. The signature gold on every piece is our crown—a statement of your unshakeable worth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Our Collections</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2dd88ea2-a33c-4a79-8504-49387c239a34.png" alt="Professional woman in elegant black and gold formal power suit standing confidently in modern office environment - executive fashion photography" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Formal Warrior Collection</h3>
+                        <p class="product-price">The boardroom is your battlefield. Dress like the queen you are.</p>
+                        <a href="#" class="btn">Shop Now</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1a273387-a041-488b-9e1d-57c4cd9e5b61.png" alt="Confident woman in sophisticated smart casual black and gold outfit in urban setting - daytime fashion photography with natural lighting" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Smart Casual Line</h3>
+                        <p class="product-price">Every day is a day to reclaim your crown. Your uniform is ready.</p>
+                        <a href="#" class="btn">Shop Now</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/08936827-15bf-4313-b7fe-872d8d6788ab.png" alt="Empowered woman wearing signature gold-accented black evening dress at gala event - luxurious fashion photography with dramatic lighting" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Evening Royalty</h3>
+                        <p class="product-price">Command attention, own your space, and lead with unwavering confidence.</p>
+                        <a href="#" class="btn">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section id="values" class="values">
+        <div class="container">
+            <h2 class="section-title">Our Core Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="value-title">Empowerment</h3>
+                    <p>We provide the tools for women to rewrite their narratives, transforming trauma into triumph.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="value-title">Unity</h3>
+                    <p>We believe in the power of women supporting women, knowing that true strength is found in a united front.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-fist-raised"></i>
+                    </div>
+                    <h3 class="value-title">Resilience</h3>
+                    <p>We champion a mindset of not just surviving, but thriving, and moving forward with purpose.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="value-title">Dignity</h3>
+                    <p>We honor every woman's journey, affirming that her worth is not defined by her past.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Foundation Section -->
+    <section id="foundation" class="foundation">
+        <div class="container">
+            <h2 class="section-title">Our Movement</h2>
+            <div class="foundation-content">
+                <p>More Than a Brand, It's a Movement</p>
+                <p>The Warrior Queen's Code is also a movement. Every purchase you make is a statement of solidarity and a direct contribution to our foundation. A portion of every garment sold goes directly to providing resources, hope, and a future for women who are ready to find their own strength.</p>
+                <p>We don't just help women; we empower them to help the next. We are building a united front of women fixing each other's crowns, reclaiming their power, and leading with love.</p>
+                <a href="#" class="btn">Learn About Our Foundation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>The Warrior Queen's Code</h3>
+                    <p>Lead with Love. Reign with Power.</p>
+                    <p>Transforming victims into warrior queens through fashion and empowerment.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <p>Email: info@warriorqueenscode.com</p>
+                    <p>Phone: (555) 123-4567</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Join the Movement</h3>
+                    <p>Subscribe to our newsletter for updates on new collections, foundation initiatives, and empowering stories.</p>
+                    <form>
+                        <input type="email" placeholder="Your Email" style="padding: 10px; width: 100%; margin-bottom: 10px; border: none; border-radius: 5px;">
+                        <button type="submit" class="btn" style="width: 100%;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2023 The Warrior Queen's Code. All rights reserved. | Lead with Love. Reign with Power.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+                header.style.padding = '15px 0';
+            } else {
+                header.style.background = 'linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 100%)';
+                header.style.padding = '20px 0';
+            }
+        });
+    </script>
+</body>
+</html>
+
